@@ -1,0 +1,86 @@
+@page
+@model B2BAgentPortal.Pages.NewOrderModel
+@{ ViewData["Title"] = "New Order"; }
+
+<h2> <i class="bi bi-cart-plus"></i> New Order</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post">
+    <div class="table-responsive">
+        <table class="table" id="lines">
+            <thead>
+                <tr><th>Item</th><th style="width:140px">Quantity</th><th class="text-end">Amount (VND)</th><th></th></tr>
+            </thead>
+            <tbody></tbody>  @* rows are created by the script below *@
+        </table>
+    </div>
+    <button type="button" id="addLine" class="btn btn-outline-primary">+ Add line</button>
+    <div class="text-end fs-5 mt-3">Total: <strong id="total">0</strong> VND</div>
+    <button class="btn btn-success mt-2">Place order</button>
+</form>
+
+@* Blueprint for one row; the script clones it for every new line *@
+<template id="rowTemplate">
+    <tr>
+        <td>
+            <select class="form-select item">
+                @foreach (var i in Model.Items)
+                {
+                    <option value="@i.ItemId" data-price="@i.Price.ToString(System.Globalization.CultureInfo.InvariantCulture)">
+                        @i.ItemName (@i.Size) - @i.Price.ToString("N0") - stock @i.StockQuantity
+                    </option>
+                }
+            </select>
+        </td>
+        <td><input type="number" min="1" value="1" class="form-control qty" /></td>
+        <td class="text-end amount">0</td>
+        <td><button type="button" class="btn btn-sm btn-outline-danger remove">&times;</button></td>
+    </tr>
+</template>
+
+@section Scripts {
+<script>
+    const tbody = document.querySelector('#lines tbody');
+    const tpl = document.getElementById('rowTemplate');
+
+    function addRow(itemId, qty) {
+        const row = tpl.content.firstElementChild.cloneNode(true);   // copy the blueprint
+        if (itemId) row.querySelector('.item').value = itemId;
+        if (qty) row.querySelector('.qty').value = qty;
+        tbody.appendChild(row);
+        refresh();
+    }
+
+    // Recalculate the amounts and total, and renumber the field names
+    // (Lines[0], Lines[1], ...) so the server can bind them as a list
+    function refresh() {
+        let total = 0;
+        tbody.querySelectorAll('tr').forEach((row, i) => {
+            const sel = row.querySelector('.item');
+            const qty = row.querySelector('.qty');
+            sel.name = `Lines[${i}].ItemId`;
+            qty.name = `Lines[${i}].Quantity`;
+            const price = parseFloat(sel.selectedOptions[0].dataset.price);
+            const amount = price * (parseInt(qty.value) || 0);
+            row.querySelector('.amount').textContent = amount.toLocaleString('en-US');
+            total += amount;
+        });
+        document.getElementById('total').textContent = total.toLocaleString('en-US');
+    }
+
+    document.getElementById('addLine').onclick = () => addRow();
+    tbody.addEventListener('input', refresh);                        // item or quantity changed
+    tbody.addEventListener('click', e => {
+        if (e.target.classList.contains('remove')) { e.target.closest('tr').remove(); refresh(); }
+    });
+
+    // After a failed order, rebuild the rows the agent had typed
+    const initial = @Html.Raw(Json.Serialize(Model.Lines));
+    if (initial.length) initial.forEach(l => addRow(l.itemId, l.quantity)); else addRow();
+</script>
+}
