@@ -1,0 +1,17 @@
+@page
+@model B2BAgentPortal.Pages.LoginModel
+@{ ViewData["Title"] = "Agent Login"; }
+
+<h2>Agent Login</h2>
+<form method="post" style="max-width:360px">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <div class="text-danger mb-2">@Model.Error</div>
+    <button class="btn btn-primary">Sign in</button>
+</form>

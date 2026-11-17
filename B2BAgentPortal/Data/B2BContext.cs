@@ -26,8 +26,8 @@ public partial class B2BContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:B2BWholesaleDb");
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //     => optionsBuilder.UseSqlServer("Name=ConnectionStrings:B2BWholesaleDb");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
