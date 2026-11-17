@@ -1,0 +1,41 @@
+@page "{id:int}"
+@model B2BAgentPortal.Pages.InvoiceModel
+@{ ViewData["Title"] = "Invoice #" + Model.Order.OrderId; }
+
+<div class="no-print mb-3">
+    <a asp-page="/Orders" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Back</a>
+    <button class="btn btn-primary" onclick="window.print()"><i class="bi bi-printer"></i> Print / Save as PDF</button>
+</div>
+
+<h2>INVOICE</h2>
+<p>
+    Order #: <strong>@Model.Order.OrderId</strong><br />
+    Date: @Model.Order.OrderDate.ToString("dd/MM/yyyy HH:mm")<br />
+    Status: @Model.Order.OrderStatus
+</p>
+<p>
+    <strong>@Model.Order.Agent.AgentName</strong><br />
+    @Model.Order.Agent.Address<br />
+    @Model.Order.Agent.Phone
+</p>
+
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead><tr><th>Item</th><th>Size</th><th class="text-end">Qty</th><th class="text-end">Unit price</th><th class="text-end">Amount</th></tr></thead>
+    <tbody>
+    @foreach (var d in Model.Order.OrderDetails)
+    {
+        <tr>
+            <td>@d.Item.ItemName</td>
+            <td>@d.Item.Size</td>
+            <td class="text-end">@d.Quantity</td>
+            <td class="text-end">@d.UnitAmount.ToString("N0")</td>
+            <td class="text-end">@((d.Quantity * d.UnitAmount).ToString("N0"))</td>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+        <tr><th colspan="4" class="text-end">Total (VND)</th><th class="text-end">@Model.Total.ToString("N0")</th></tr>
+    </tfoot>
+</table>
+</div>

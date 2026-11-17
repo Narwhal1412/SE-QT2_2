@@ -2,7 +2,7 @@
 @model B2BAgentPortal.Pages.NewOrderModel
 @{ ViewData["Title"] = "New Order"; }
 
-<h2>New Order</h2>
+<h2 class="bi bi-cart-plus"> New Order</h2>
 
 @if (TempData["Message"] != null)
 {
@@ -11,13 +11,14 @@
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form method="post">
-    <table class="table" id="lines">
-        <thead>
-            <tr><th>Item</th><th style="width:140px">Quantity</th><th class="text-end">Amount (VND)</th><th></th></tr>
-        </thead>
-        <tbody></tbody>  @* rows are created by the script below *@
-    </table>
-
+    <div class="table-responsive">
+        <table class="table" id="lines">
+            <thead>
+                <tr><th>Item</th><th style="width:140px">Quantity</th><th class="text-end">Amount (VND)</th><th></th></tr>
+            </thead>
+            <tbody></tbody>  @* rows are created by the script below *@
+        </table>
+    </div>
     <button type="button" id="addLine" class="btn btn-outline-primary">+ Add line</button>
     <div class="text-end fs-5 mt-3">Total: <strong id="total">0</strong> VND</div>
     <button class="btn btn-success mt-2">Place order</button>
