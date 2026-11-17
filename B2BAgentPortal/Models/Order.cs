@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace B2BAgentPortal.Models;
+
+public partial class Order
+{
+    public int OrderId { get; set; }
+
+    public DateTime OrderDate { get; set; }
+
+    public int AgentId { get; set; }
+
+    public string OrderStatus { get; set; } = null!;
+
+    public virtual Agent Agent { get; set; } = null!;
+
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+}
