@@ -1,10 +1,28 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@{ ViewData["Title"] = "Catalog"; }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2><i class="bi bi-grid"></i> Catalog</h2>
+<form method="get" class="mb-3 d-flex" style="max-width:400px">
+    <input asp-for="Search" class="form-control me-2" placeholder="Search item..." />
+    <button class="btn btn-outline-primary">Search</button>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead><tr><th>Item</th><th>Size</th><th class="text-end">Price (VND)</th><th class="text-end">In stock</th></tr></thead>
+        <tbody>
+        @foreach (var i in Model.Items)
+        {
+            <tr>
+                <td>@i.ItemName</td>
+                <td>@i.Size</td>
+                <td class="text-end">@i.Price.ToString("N0")</td>
+                <td class="text-end">
+                    @if (i.StockQuantity < 20) { <span class="badge bg-warning text-dark">@i.StockQuantity</span> }
+                    else { @i.StockQuantity }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>

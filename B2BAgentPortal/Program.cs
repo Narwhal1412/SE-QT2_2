@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using B2BAgentPortal.Data;
+using B2BAgentPortal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Database: the connection string comes from configuration, never from code
 builder.Services.AddDbContext<B2BContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("B2BWholesaleDb")));
+
+builder.Services.AddScoped<OrderService>();
 
 // Cookie login: unauthenticated visitors are sent to /Login
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
