@@ -4,7 +4,7 @@ SE LAB ASSIGNMENT 2 - B2B WHOLESALE MANAGEMENT SYSTEM          Group 69, Sem 1_2
 
 1. LINKS
    GitHub repository : https://github.com/Narwhal1412/SE-QT2_2
-   Video demo        : [PASTE LINK HERE] (optional)
+   Video demo        : https://www.youtube.com/watch?v=cqJObVwS7Jc
 
 2. TEAM AND CONTRIBUTION
    Student                       ID         Work                                          %
