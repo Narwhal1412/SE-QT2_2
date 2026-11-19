@@ -24,7 +24,8 @@ SE LAB ASSIGNMENT 2 - B2B WHOLESALE MANAGEMENT SYSTEM          Group 69, Sem 1_2
    Step 1  Create the database: open Database/01_Schema_Seed.sql in SSMS and run it once.
            It creates database B2BWholesaleDB, 5 tables and the seed data.
            (Running it again drops and recreates the tables.)
-   Step 2  Connection string (stored in config files, never in the code):
+   Step 2  Open \SE-QT2_2\B2BWholesale\B2BAdmin\B2BAdmin.csproj
+           Connection string (stored in config files, never in the code):
            Desktop : B2BWholesale/B2BAdmin/App.config      -> name "B2BWholesaleDb"
            Web     : B2BAgentPortal/appsettings.json       -> ConnectionStrings:B2BWholesaleDb
            The default uses (localdb)\MSSQLLocalDB with Windows authentication,
