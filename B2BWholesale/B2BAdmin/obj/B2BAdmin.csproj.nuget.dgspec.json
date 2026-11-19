@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LAPTOP 3H\\Downloads\\QT2_SE\\B2BWholesale_Desktop\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj": {}
+    "C:\\Users\\henrrypoop\\source\\repos\\SE-QT2_2\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LAPTOP 3H\\Downloads\\QT2_SE\\B2BWholesale_Desktop\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj": {
+    "C:\\Users\\henrrypoop\\source\\repos\\SE-QT2_2\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LAPTOP 3H\\Downloads\\QT2_SE\\B2BWholesale_Desktop\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj",
+        "projectUniqueName": "C:\\Users\\henrrypoop\\source\\repos\\SE-QT2_2\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj",
         "projectName": "B2BAdmin",
-        "projectPath": "C:\\Users\\LAPTOP 3H\\Downloads\\QT2_SE\\B2BWholesale_Desktop\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj",
-        "packagesPath": "C:\\Users\\LAPTOP 3H\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LAPTOP 3H\\Downloads\\QT2_SE\\B2BWholesale_Desktop\\B2BWholesale\\B2BAdmin\\obj\\",
+        "projectPath": "C:\\Users\\henrrypoop\\source\\repos\\SE-QT2_2\\B2BWholesale\\B2BAdmin\\B2BAdmin.csproj",
+        "packagesPath": "C:\\Users\\henrrypoop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\henrrypoop\\source\\repos\\SE-QT2_2\\B2BWholesale\\B2BAdmin\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LAPTOP 3H\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\henrrypoop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -72,24 +72,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.31, 8.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.31, 8.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.31, 8.0.31]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.31, 8.0.31]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
